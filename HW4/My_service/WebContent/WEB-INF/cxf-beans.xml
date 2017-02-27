@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<jaxws:endpoint xmlns:tns="http://mycourierservice.idu0080.ttu/"
+		id="courierservice" implementor="ttu.idu0080.mycourierservice.CourierServiceImpl"
+		wsdlLocation="WEB-INF/wsdl/couriers.wsdl" endpointName="tns:CourierServicePort"
+		serviceName="tns:CourierServiceService" address="/CourierServicePort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
+	<jaxws:endpoint xmlns:tns="http://offerservice.idu0080.ttu/"
+		id="offerservice" implementor="ttu.idu0080.offerservice.OfferServiceImpl"
+		wsdlLocation="WEB-INF/wsdl/offer.wsdl" endpointName="tns:OfferServicePort"
+		serviceName="tns:OfferServiceService" address="/OfferServicePort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
+	<jaxws:endpoint xmlns:tns="http://transportorderservice.idu0080.ttu/"
+		id="transportorderservice" implementor="ttu.idu0080.transportorderservice.TransportOrderServiceImpl"
+		wsdlLocation="WEB-INF/wsdl/transportOrder.wsdl" endpointName="tns:TransportOrderServicePort"
+		serviceName="tns:TransportOrderServiceService" address="/TransportOrderServicePort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
+</beans>
